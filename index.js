@@ -10,6 +10,7 @@
 // I decided to start with actually pulling the data from the .json file. I did this because it was a small part of the problem that I was able to do. From here, I just need to work out the actual problem. The last step will be converting back to JSON.
 
 // This is pulling data from .json file and setting it to a variable called animals if successful. If unsuccessful, there will be an error thrown.
+
 const fs = require("fs");
 fs.readFile("./animals.json", "utf8", (err, jsonString) => {
   if (err) {
@@ -19,7 +20,14 @@ fs.readFile("./animals.json", "utf8", (err, jsonString) => {
   try {
     const animals = JSON.parse(jsonString);
     console.log(animals);
+    // Todo: For now, I will write code in this try statement because I can't figure out how to access it outside.
+    // Maybe a function to the return the animals
+    animals.livestock.forEach((animal) => {
+      console.log(animal);
+    });
   } catch (err) {
     console.log("Error parsing JSON string:", err);
   }
 });
+
+// Trying to return animals in a function to see if I can avoid putting all my code inside catch/try
